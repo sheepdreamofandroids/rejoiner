@@ -55,8 +55,7 @@ public final class SchemaToTypeScript {
 
   private static String toEnum(GraphQLEnumType type) {
     String types =
-        type.getValues()
-            .stream()
+        type.getValues().stream()
             .map(value -> value.getName())
             .filter(name -> !name.equals("UNRECOGNIZED"))
             .collect(Collectors.joining(", \n  "));
@@ -65,8 +64,7 @@ public final class SchemaToTypeScript {
 
   private static String toMessage(GraphQLObjectType type) {
     String fields =
-        type.getFieldDefinitions()
-            .stream()
+        type.getFieldDefinitions().stream()
             .filter(field -> !field.getName().equals("_"))
             .map(field -> toField(field))
             .collect(Collectors.joining("\n"));

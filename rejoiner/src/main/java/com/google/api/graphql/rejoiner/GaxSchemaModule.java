@@ -78,13 +78,11 @@ public abstract class GaxSchemaModule extends SchemaModule {
 
   private Stream<Method> getMethods(Class<?> clientClass, ImmutableList<String> methodWhitelist) {
     ImmutableSet<String> asyncNameWhitelist =
-        methodWhitelist
-            .stream()
+        methodWhitelist.stream()
             .map(name -> name + "Callable")
             .collect(ImmutableSet.toImmutableSet());
 
-    return ImmutableList.copyOf(clientClass.getMethods())
-        .stream()
+    return ImmutableList.copyOf(clientClass.getMethods()).stream()
         .filter(method -> asyncNameWhitelist.contains(method.getName()));
   }
 

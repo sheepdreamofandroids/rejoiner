@@ -119,8 +119,7 @@ final class ProtoToGql {
             return null;
           }
           Map<?, ?> map = (Map<?, ?>) mapValue;
-          return map.entrySet()
-              .stream()
+          return map.entrySet().stream()
               .map(entry -> ImmutableMap.of("key", entry.getKey(), "value", entry.getValue()))
               .collect(toImmutableList());
         }
@@ -195,9 +194,7 @@ final class ProtoToGql {
         descriptor.getFields().stream().map(FIELD_CONVERTER).collect(toImmutableList());
 
     Optional<GraphQLFieldDefinition> relayId =
-        descriptor
-            .getFields()
-            .stream()
+        descriptor.getFields().stream()
             .filter(field -> field.getOptions().hasExtension(RelayOptionsProto.relayOptions))
             .map(
                 field ->

@@ -41,11 +41,7 @@ public abstract class GraphQlStreamObserver<T extends Message, R extends Message
   @Override
   public void onNext(T value) {
     List<Value> path =
-        dataFetchingEnvironment
-            .getExecutionStepInfo()
-            .getPath()
-            .toList()
-            .stream()
+        dataFetchingEnvironment.getExecutionStepInfo().getPath().toList().stream()
             .map(
                 p ->
                     p instanceof Number

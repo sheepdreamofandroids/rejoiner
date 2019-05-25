@@ -54,9 +54,7 @@ final class ProtoRegistry {
   }
 
   boolean hasRelayNode() {
-    return mapping
-        .values()
-        .stream()
+    return mapping.values().stream()
         .anyMatch(
             type ->
                 type instanceof GraphQLObjectType
@@ -118,8 +116,7 @@ final class ProtoRegistry {
     ProtoRegistry build() {
       ImmutableListMultimap<String, TypeModification> modificationsMap =
           ImmutableListMultimap.copyOf(
-              this.typeModifications
-                  .stream()
+              this.typeModifications.stream()
                   .map(
                       modification ->
                           new SimpleImmutableEntry<>(modification.getTypeName(), modification))

@@ -40,9 +40,7 @@ final class DescriptorSet {
               .getResourceAsStream(DEFAULT_DESCRIPTOR_SET_FILE_LOCATION);
       DescriptorProtos.FileDescriptorSet descriptors =
           DescriptorProtos.FileDescriptorSet.parseFrom(is);
-      return descriptors
-          .getFileList()
-          .stream()
+      return descriptors.getFileList().stream()
           .flatMap(
               fileDescriptorProto -> parseDescriptorFile(fileDescriptorProto).entrySet().stream())
           .collect(
@@ -55,10 +53,7 @@ final class DescriptorSet {
 
   private static Map<String, String> parseDescriptorFile(
       DescriptorProtos.FileDescriptorProto descriptor) {
-    return descriptor
-        .getSourceCodeInfo()
-        .getLocationList()
-        .stream()
+    return descriptor.getSourceCodeInfo().getLocationList().stream()
         .filter(
             location ->
                 !(location.getLeadingComments().isEmpty()

@@ -163,8 +163,7 @@ public final class SchemaModuleTest {
         schemaBundle.mutationFields().iterator().next().getArguments();
     assertThat(arguments).hasSize(2);
     assertThat(
-            arguments
-                .stream()
+            arguments.stream()
                 .map(argument -> argument.getName())
                 .collect(ImmutableList.toImmutableList()))
         .containsExactly("input", "showDeleted");

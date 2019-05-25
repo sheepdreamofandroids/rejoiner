@@ -44,9 +44,7 @@ public final class SchemaProviderModule extends AbstractModule {
     public GraphQLSchema get() {
       SchemaBundle schemaBundle = SchemaBundle.combine(schemaBundleProviders.get());
       Map<String, ? extends Function<String, Object>> nodeDataFetchers =
-          schemaBundle
-              .nodeDataFetchers()
-              .stream()
+          schemaBundle.nodeDataFetchers().stream()
               .collect(Collectors.toMap(e -> e.getClassName(), Function.identity()));
 
       GraphQLObjectType.Builder queryType =

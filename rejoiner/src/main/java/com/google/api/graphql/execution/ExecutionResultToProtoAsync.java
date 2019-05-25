@@ -61,8 +61,7 @@ public final class ExecutionResultToProtoAsync {
           com.google.api.graphql.ErrorType.VALIDATION_ERROR);
 
   private static ImmutableList<GraphqlError> errorsToProto(List<GraphQLError> errors) {
-    return errors
-        .stream()
+    return errors.stream()
         .map(
             error ->
                 GraphqlError.newBuilder()
@@ -71,9 +70,7 @@ public final class ExecutionResultToProtoAsync {
                         ERROR_TYPE_MAP.getOrDefault(
                             error.getErrorType(), com.google.api.graphql.ErrorType.UNKNOWN))
                     .addAllLocations(
-                        error
-                            .getLocations()
-                            .stream()
+                        error.getLocations().stream()
                             .map(
                                 location ->
                                     SourceLocation.newBuilder()
